@@ -1,0 +1,26 @@
+<% include head.ejs%>
+<div class="">
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-5 login-icon">
+                  <img src="images/imac.png" alt="Welcome to Campfire">
+                  <h4>Welcome to <small>Campfire</small></h4>
+          </div>
+
+          <div class="col-xs-3 login-screen">
+            <form action="/login" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" name="name" />
+                <label class="login-field-icon fui-user" for="login-name"></label>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" name="password" />
+                <label class="login-field-icon fui-lock" for="login-pass"></label>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block">Log in</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
+<% include foot.ejs%>
