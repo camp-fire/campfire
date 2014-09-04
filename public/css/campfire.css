@@ -17,20 +17,14 @@ body {
 }
 .login-icon img {
     width: 150px;
-    position: relative;
-    top: 10px;
-    left: 300px;
+    float: right;
 }
 .login-icon h4 {
     width: 150px;
-    position: relative;
-    top: 10px;
-    left: 300px;
+    float: right;
 }
 .login-screen {
 }
 .login-screen form{
     position: relative;
-    top:10px;
 }
-

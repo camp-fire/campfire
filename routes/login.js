@@ -6,11 +6,14 @@ var express = require("express");
 var router = express.Router();
 var User = require("../model/User");
 var crypto = require("crypto");
+var util = require("../util");
 
 router.route("/")
+    .get(util.checkNotLogin)
     .get(function(req,res){
         res.render("login");
     })
+    .post(util.checkNotLogin)
     .post(function(req,res){
 
         var md5 = crypto.createHash("md5");

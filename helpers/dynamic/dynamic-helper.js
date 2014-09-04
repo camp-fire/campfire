@@ -17,6 +17,14 @@ var helpers = {
         }else{
             return null;
         }
+    },
+    info:function(req,res){
+        var info = req.flash("info");
+        if(info && info.length!=0){
+            return info;
+        }else{
+            return null;
+        }
     }
 }
 module.exports = helpers;

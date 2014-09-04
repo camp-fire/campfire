@@ -53,6 +53,7 @@ app.use(function(req, res, next){
     res.locals.user = dynamicHelpers.user(req,res);
     res.locals.error = dynamicHelpers.error(req,res);
     res.locals.success = dynamicHelpers.success(req,res);
+    res.locals.info = dynamicHelpers.info(req,res);
     next();
 });
 

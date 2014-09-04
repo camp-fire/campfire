@@ -6,11 +6,17 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../model/User");
+/**
+ * 工具对象
+ */
+var util = require("../util");
 
 router.route("/")
+    .get(util.checkNotLogin)
     .get(function(req,res){
-        res.render("reg",{title:"用户注册"});
+        res.render("reg");
     })
+    .post(util.checkNotLogin)
     .post(function(req,res){
         var user = new User(req.body.name,req.body.password);
         if(user.password !== req.body.confirmPassword){

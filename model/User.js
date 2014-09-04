@@ -2,6 +2,10 @@
 var mongodb = require("db");
 var crypto = require("crypto");
 
+/**
+ * Created by zhangjun on 14-9-3.
+ * 博客类
+ */
 function User(name,password){
     this.name=name;
     this.password=password;
