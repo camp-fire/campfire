@@ -7,14 +7,15 @@ String.prototype.repeat = function(num) {
 (function($) {
 
   // Add segments to a slider
-  $.fn.addSliderSegments = function (amount, orientation) {    
-    return this.each(function () {
-      if (orientation == "vertical") {
+  $.fn.addSliderSegments = function(amount, orientation) {
+    return this.each(function() {
+      if(orientation == "vertical") {
         var output = ''
           , i;
-        for (i = 1; i <= amount - 2; i++) {
+        for(i = 1; i <= amount - 2; i++) {
           output += '<div class="ui-slider-segment" style="top:' + 100 / (amount - 1) * i + '%;"></div>';
-        };
+        }
+        ;
         $(this).prepend(output);
       } else {
         var segmentGap = 100 / (amount - 1) + "%"
@@ -25,7 +26,7 @@ String.prototype.repeat = function(num) {
   };
 
   $(function() {
-  
+
     // Todo list
     $(".todo").on('click', 'li', function() {
       $(this).toggleClass("todo-done");
@@ -44,7 +45,7 @@ String.prototype.repeat = function(num) {
 
     // jQuery UI Sliders
     var $slider = $("#slider");
-    if ($slider.length) {
+    if($slider.length) {
       $slider.slider({
         min: 1,
         max: 5,
@@ -55,7 +56,7 @@ String.prototype.repeat = function(num) {
     }
 
     var $verticalSlider = $("#vertical-slider");
-    if ($verticalSlider.length) {
+    if($verticalSlider.length) {
       $verticalSlider.slider({
         min: 1,
         max: 5,
@@ -69,9 +70,9 @@ String.prototype.repeat = function(num) {
     $(":text, textarea").placeholder();
 
     // Focus state for append/prepend inputs
-    $('.input-group').on('focus', '.form-control', function () {
+    $('.input-group').on('focus', '.form-control', function() {
       $(this).closest('.input-group, .form-group').addClass('focus');
-    }).on('blur', '.form-control', function () {
+    }).on('blur', '.form-control', function() {
       $(this).closest('.input-group, .form-group').removeClass('focus');
     });
 
@@ -85,30 +86,25 @@ String.prototype.repeat = function(num) {
     });
 
     // Disable link clicks to prevent page scrolling
-    $(document).on('click', 'a[href="#fakelink"]', function (e) {
+    $(document).on('click', 'a[href="#fakelink"]', function(e) {
       e.preventDefault();
     });
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
 
-        // Typeahead
+    // Typeahead
     if($('#typeahead-demo-01').length) {
       $('#typeahead-demo-01').typeahead({
         name: 'states',
         limit: 4,
-        local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
-        "Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky",
-        "Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri",
-        "Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota",
-        "North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
-        "South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+        local: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
       });
-    }  
+    }
 
     // make code pretty
     window.prettyPrint && prettyPrint();
-    
+
   });
-  
+
 })(jQuery);

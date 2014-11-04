@@ -7,7 +7,7 @@
             <label for="content">说点什么吧~</label>
             <textarea class="form-control" name="content" id="content" rows="5"></textarea>
         </div>
-        <button class="btn btn-success">发 言</button>
+        <button class="btn btn-success"><span class="glyphicon glyphicon-comment"></span> 发 言</button>
     </form>
 </div>
 <% } %>
@@ -21,16 +21,16 @@
             <h2><%= blog.userName %> 说</h2>
 
             <% if(blog.content.length > 500) { %>
-                <p><%= blog.content.substring(0, 500) %></p>
+            <p><%= blog.content.substring(0, 500) %></p>
             <% }else{ %>
-                <p><%= blog.content %></p>
+            <p><%= blog.content %></p>
             <% } %>
             <p>
                 <small><%= blog.time %></small>
             </p>
 
             <p><a class="btn btn-default" href="/users/<%= blog.userName %>?kind=detail&_id=<%= blog._id %>"
-                  role="button">查看详情&raquo;</a></p>
+                  role="button">查看详情 <span class="glyphicon glyphicon-chevron-right"></span></a></p>
         </div>
         <% if((index + 1) % 3 == 0){ %>
     </div>
@@ -41,16 +41,18 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <p class="text-left"><strong><%= blogs[0].userName %>:</strong></p>
+            <p class="text-left text-primary"><strong><%= blogs[0].userName %>:</strong></p>
 
             <p class="text-center"><%= blogs[0].content %></p>
 
             <p class="text-right"><%= blogs[0].time %></p>
+
             <p class="text-right">
                 <a class="btn btn-default" href="/users/<%= blogs[0].userName %>"
-                   role="button">&laquo; 返  回</a>
+                   role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返 回</a>
                 <% if(user && user.name == userName) { %>
-                    <a class="btn btn-danger" href="/post/remove?_id=<%= blogs[0]._id%>" role="button">删 除</a>
+                <a class="btn btn-danger" href="/post/remove?_id=<%= blogs[0]._id %>" role="button"><span
+                            class="glyphicon glyphicon-remove"></span> 删 除</a>
                 <% } %>
             </p>
 

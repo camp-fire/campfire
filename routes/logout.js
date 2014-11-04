@@ -5,11 +5,9 @@
 var express = require("express");
 var router = express.Router();
 var util = require("../util");
-router.route("/")
-    .get(util.checkLogin)
-    .get(function(req,res){
-        req.session.user=null;
-        return res.redirect("/");
-    })
+router.route("/").get(util.checkLogin).get(function(req, res) {
+    req.session.user = null;
+    return res.redirect("/");
+  })
 
 module.exports = router;

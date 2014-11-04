@@ -4,10 +4,10 @@ body {
     padding-bottom: 20px;
 }
 
-.alert-div{
-    position:absolute;
-    top:60px;
-    left:0px;
+.alert-div {
+    position: absolute;
+    top: 60px;
+    left: 0px;
     right: 0px;
     z-index: auto;
 
@@ -15,16 +15,20 @@ body {
 
 .login-icon {
 }
+
 .login-icon img {
     width: 150px;
     float: right;
 }
+
 .login-icon h4 {
     width: 150px;
     float: right;
 }
+
 .login-screen {
 }
-.login-screen form{
+
+.login-screen form {
     position: relative;
 }
