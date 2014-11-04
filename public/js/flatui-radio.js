@@ -2,30 +2,36 @@
  * flatui-radio v0.0.3
  * ============================================================ */
 
-!function($) {
+!function ($) {
 
-  /* RADIO PUBLIC CLASS DEFINITION
-   * ============================== */
+ /* RADIO PUBLIC CLASS DEFINITION
+  * ============================== */
 
-  var Radio = function(element, options) {
+  var Radio = function (element, options) {
     this.init(element, options);
   }
 
   Radio.prototype = {
 
-    constructor: Radio, init: function(element, options) {
+    constructor: Radio
+
+  , init: function (element, options) {
       var $el = this.$element = $(element)
 
       this.options = $.extend({}, $.fn.radio.defaults, options);
       $el.before(this.options.template);
       this.setState();
-    }, setState: function() {
+    }
+
+  , setState: function () {
       var $el = this.$element
         , $parent = $el.closest('.radio');
 
-      $el.prop('disabled') && $parent.addClass('disabled');
-      $el.prop('checked') && $parent.addClass('checked');
-    }, toggle: function() {
+        $el.prop('disabled') && $parent.addClass('disabled');
+        $el.prop('checked') && $parent.addClass('checked');
+    }
+
+  , toggle: function () {
       var d = 'disabled'
         , ch = 'checked'
         , $el = this.$element
@@ -35,24 +41,26 @@
         , $elemGroup = $parentWrap.find(':radio[name="' + $el.attr('name') + '"]')
         , e = $.Event('toggle')
 
-      $elemGroup.not($el).each(function() {
-        var $el = $(this)
-          , $parent = $(this).closest('.radio');
+        $elemGroup.not($el).each(function () {
+          var $el = $(this)
+            , $parent = $(this).closest('.radio');
 
-        if($el.prop(d) == false) {
-          $parent.removeClass(ch) && $el.removeAttr(ch).trigger('change');
+            if ($el.prop(d) == false) {
+              $parent.removeClass(ch) && $el.removeAttr(ch).trigger('change');
+            }
+        });
+
+        if ($el.prop(d) == false) {
+          if (checked == false) $parent.addClass(ch) && $el.prop(ch, true);
+          $el.trigger(e);
+
+          if (checked !== $el.prop(ch)) {
+            $el.trigger('change');
+          }
         }
-      });
+    }
 
-      if($el.prop(d) == false) {
-        if(checked == false) $parent.addClass(ch) && $el.prop(ch, true);
-        $el.trigger(e);
-
-        if(checked !== $el.prop(ch)) {
-          $el.trigger('change');
-        }
-      }
-    }, setCheck: function(option) {
+  , setCheck: function (option) {
       var ch = 'checked'
         , $el = this.$element
         , $parent = $el.closest('.radio')
@@ -62,17 +70,17 @@
         , $elemGroup = $parentWrap.find(':radio[name="' + $el['attr']('name') + '"]')
         , e = $.Event(option)
 
-      $elemGroup.not($el).each(function() {
+      $elemGroup.not($el).each(function () {
         var $el = $(this)
           , $parent = $(this).closest('.radio');
 
-        $parent.removeClass(ch) && $el.removeAttr(ch);
+          $parent.removeClass(ch) && $el.removeAttr(ch);
       });
 
       $parent[checkAction ? 'addClass' : 'removeClass'](ch) && checkAction ? $el.prop(ch, ch) : $el.removeAttr(ch);
       $el.trigger(e);
 
-      if(checked !== $el.prop(ch)) {
+      if (checked !== $el.prop(ch)) {
         $el.trigger('change');
       }
     }
@@ -80,19 +88,20 @@
   }
 
 
-  /* RADIO PLUGIN DEFINITION
-   * ======================== */
+ /* RADIO PLUGIN DEFINITION
+  * ======================== */
 
   var old = $.fn.radio
 
-  $.fn.radio = function(option) {
-    return this.each(function() {
+  $.fn.radio = function (option) {
+    return this.each(function () {
       var $this = $(this)
         , data = $this.data('radio')
         , options = $.extend({}, $.fn.radio.defaults, $this.data(), typeof option == 'object' && option);
-      if(!data) $this.data('radio', (data = new Radio(this, options)));
-      if(option == 'toggle') data.toggle()
-      if(option == 'check' || option == 'uncheck') data.setCheck(option) else if(option) data.setState();
+      if (!data) $this.data('radio', (data = new Radio(this, options)));
+      if (option == 'toggle') data.toggle()
+      if (option == 'check' || option == 'uncheck') data.setCheck(option)
+      else if (option) data.setState();
     });
   }
 
@@ -101,27 +110,27 @@
   }
 
 
-  /* RADIO NO CONFLICT
-   * ================== */
+ /* RADIO NO CONFLICT
+  * ================== */
 
-  $.fn.radio.noConflict = function() {
+  $.fn.radio.noConflict = function () {
     $.fn.radio = old;
     return this;
   }
 
 
-  /* RADIO DATA-API
-   * =============== */
+ /* RADIO DATA-API
+  * =============== */
 
-  $(document).on('click.radio.data-api', '[data-toggle^=radio], .radio', function(e) {
+  $(document).on('click.radio.data-api', '[data-toggle^=radio], .radio', function (e) {
     var $radio = $(e.target);
     e && e.preventDefault() && e.stopPropagation();
-    if(!$radio.hasClass('radio')) $radio = $radio.closest('.radio');
+    if (!$radio.hasClass('radio')) $radio = $radio.closest('.radio');
     $radio.find(':radio').radio('toggle');
   });
 
-  $(function() {
-    $('[data-toggle="radio"]').each(function() {
+  $(function () {
+    $('[data-toggle="radio"]').each(function () {
       var $radio = $(this);
       $radio.radio();
     });

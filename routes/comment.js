@@ -5,8 +5,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/comment', function(req, res) {
-  res.send("this is comment method");
+router.post('/comment',function(req,res){
+    res.send("this is comment method");
 });
 
 module.exports = router;
