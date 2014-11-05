@@ -4,7 +4,7 @@
             var password = $("#password").val();
             var confirmPassword = $("#confirmPassword").val();
             if(password !== confirmPassword){
-
+            	alert("密码不等");
             }
         });
     });
